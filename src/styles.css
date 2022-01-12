@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(114,130,196,1) 100%);
+  }
+  .card, li{
+    background-color: #FFFFFF!important;
+  }
+  
+  .navbar{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 55px;
+    }
+  
+  
+  #profile{
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-left: 15px;    
+    margin-top: -80px;
+    margin-bottom: 0px;
+    }
+  
+  img {
+    vertical-align: top;
+    margin: -1px;
+    }
+  
+  icons{
+    margin-right: 10px;
+  }
+  
+  #review{
+    float:right;
+  }
+  
+  
+  
+  .edit{
+    margin-left: 7px;
+    margin-top: 12px
+  }
+  
+  .fa-plus{
+    font-size: 1.7em;
+    margin-top:10px
+  }
+  
+  .fa-pen{
+    font-size: 1em;
+    margin-right:5px;
+  
+  }
+  
+  .fa-trash-alt{
+    font-size: 1em;
+    margin-top:4px;
+  }
+  
