@@ -4,6 +4,7 @@ body{
   }
   .card, li{
     background-color: #FFFFFF!important;
+    border-radius: 0%!important;
   }
   
 
@@ -48,7 +49,11 @@ body{
   }
   
   #review{
+    width: 350px;
+    height:100px;
+    display: flex;
     float:right;
+    text-justify: center;
   }
   
   
@@ -74,3 +79,6 @@ body{
     margin-top:4px;
   }
   
+  .fas:hover{
+    opacity: .5;
+  }

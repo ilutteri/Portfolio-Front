@@ -1,11 +1,11 @@
 <div class="card mb-3">    <!--Banner / Profile / Review-->
-    <img src="assets/img/banner.jpg" class="responsive" id="banner" alt="Mountains And Clouds">
-    <img src="assets/img/profile.jpeg" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
+    <img [src]="portfolio.banner" class="responsive" id="banner" alt="Mountains And Clouds">
+    <img [src]="portfolio.profileImg" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
     <div class="card-body">
-      <h5 class="card-title fs-2" > Ignacio Lutteri </h5>
-      <p class="card-text fs-2"><b>Full Stack Developer Jr.</b></p>
-      <div class="d-flex flex-row-reverse bd-highlight fw-normal" id="Review">
-        Me encuentro realizando el curso Argentina Programa, <br> dando mis primeros pasos realizando Aplicaciones Web<br>tanto en el desarrollo FrontEnd como en el BackEnd.
+      <h5 class="card-title fs-2" > {{portfolio.name}} </h5>
+      <p class="card-text fs-3"><b>{{portfolio.title}}</b></p>
+      <div class="card w-75 border-0" style="float:right">
+       <p class="text-break">{{portfolio.about}}</p>
       </div>
-    </div>
+  </div>
   </div>
