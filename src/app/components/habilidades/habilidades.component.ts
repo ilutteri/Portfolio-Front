@@ -8,13 +8,12 @@ import { PortfolioService } from 'src/app/services/portfolio.service'
 })
 export class HabilidadesComponent implements OnInit {
   skillList:any;
-  frontendList:any;
-  backendList:any;
+  root:string = "skills"
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.skillList = data.skills;
+    this.datosPortfolio.obtenerDatos(this.root).subscribe(data => {
+      this.skillList = data;
     })
   }
 

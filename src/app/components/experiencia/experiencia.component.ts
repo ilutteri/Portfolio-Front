@@ -8,11 +8,12 @@ import { PortfolioService } from 'src/app/services/portfolio.service'
 })
 export class ExperienciaComponent implements OnInit {
   experienceList:any;
+  root:string = "experience"
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.experienceList = data.experience;
+    this.datosPortfolio.obtenerDatos(this.root).subscribe(data => {
+      this.experienceList = data;
     })
   }
 

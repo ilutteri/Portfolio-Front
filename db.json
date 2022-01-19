@@ -1,13 +1,12 @@
 {
-  "profile":[{
-    "name": "Ignacio Lutteri",
-    "title": "Full Stack Developer Jr.",
-    "banner":"https://i.imgur.com/JyVm9Yb.jpg",
-    "profileImg":"https://i.imgur.com/upMOHwe.jpg",
-    "about":"Me encuentro realizando el curso Argentina Programa, dando mis primeros pasos realizando Aplicaciones Web tanto en el desarrollo FrontEnd como en el BackEnd."
+    "profile":{
+        "name": "Ignacio Lutteri",
+        "title": "Full Stack Developer Jr.",
+        "banner":"https://i.imgur.com/JyVm9Yb.jpg",
+        "profileImg":"https://i.imgur.com/upMOHwe.jpg",
+        "about":"Me encuentro realizando el curso Argentina Programa, dando mis primeros pasos realizando Aplicaciones Web tanto en el desarrollo FrontEnd como en el BackEnd."
 
-    }], 
-
+    },
     "experience": [{
         "position": "Vendedor / Atención al Cliente",
         "company": "Oddity Music",
@@ -113,5 +112,3 @@
     }
     ]
 }
-
-
