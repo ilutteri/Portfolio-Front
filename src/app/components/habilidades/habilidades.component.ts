@@ -7,16 +7,14 @@ import { PortfolioService } from 'src/app/services/portfolio.service'
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
-  softList:any;
+  skillList:any;
   frontendList:any;
   backendList:any;
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.softList = data.soft;
-      this.frontendList = data.frontend;
-      this.backendList = data.backend;
+      this.skillList = data.skills;
     })
   }
 

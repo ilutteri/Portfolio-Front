@@ -44,7 +44,7 @@
     },
     {
         "name": "Instituto Corazón de María",
-        "img":"https://i.imgur.com/O31HKqT.png",
+        "img":"https://i.imgur.com/Ub7JhcK.png",
         "title":"Bachiller en Administración Contable",
         "start":"2005",
         "end":"2007",
@@ -53,8 +53,9 @@
     }
     ],
 
-    
-    "soft":[{
+    "skills":[{
+        "name":"Soft Skills",
+        "skills":[{
             "name":["Resolución de Problemas"],
             "progress": 95
             },
@@ -70,9 +71,11 @@
             "name":"Trabajo en Equipo",
             "progress": 95
             }
-            ],
-        
-        "frontend":[{
+            ]
+        },
+        {
+        "name":"Frontend",
+        "skills":[{
                        "name":"HTML",
                        "progress": 80
                     },
@@ -88,8 +91,11 @@
                         "name":"Angular",
                         "progress": 50
                     }
-                  ],
-        "backend":[{
+                  ]
+        },
+        {
+        "name":"Backend",
+        "skills":[{
                        "name":"SQL",
                        "progress": 45
                    },
@@ -102,7 +108,8 @@
                        "progress":40
                    }
                 ]
-      
+    }
+    ]
 }
 
 
