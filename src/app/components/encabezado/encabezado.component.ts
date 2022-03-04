@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { profile } from '../../classes/profile';
+import { profile } from '../../interfaces/profile';
 
 @Component({
   selector: 'app-encabezado',

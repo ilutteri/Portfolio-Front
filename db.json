@@ -8,6 +8,7 @@
   },
   "experience": [
     {
+      "id": 1,
       "position": "Vendedor / Atención al Cliente",
       "company": "Oddity Music",
       "img": "https://i.imgur.com/IHobcxj.png",
@@ -20,15 +21,15 @@
   ],
   "education": [
     {
-      "id":1,
+      "id": 1,
       "name": "Facultad de Informática UNLP",
       "img": "https://i.imgur.com/Hkf2sPv.png",
       "title": "Analista Programador Universitario",
-      "start":"2015",
-      "end":"2017",
-      "state":"Incompleto"
-  },
-  {
+      "start": "2015",
+      "end": "2017",
+      "state": "Incompleto"
+    },
+    {
       "id": 2,
       "name": "Instituto Cambridge de Cultura Inglesa",
       "img": "https://i.imgur.com/F4OVFkB.png",
@@ -44,15 +45,6 @@
       "title": "JavaScript Algorithms and Data Structures Certification",
       "start": "Sept 2021",
       "end": "Oct 2021",
-      "state": "Completo"
-    },
-    {
-      "id": 4,
-      "name": "Instituto Corazón de María",
-      "img": "https://i.imgur.com/Ub7JhcK.png",
-      "title": "Bachiller en Administración Contable",
-      "start": "2005",
-      "end": "2007",
       "state": "Completo"
     }
   ],
@@ -122,27 +114,27 @@
   "projects": [
     {
       "id": 1,
-      "title":"Portfolio Web",
-      "img":"https://i.imgur.com/x6eI8TY.jpg",
-      "description":"Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
-      "url":"http://www.google.com",
-      "gitHubUrl":"github.com"
+      "title": "Portfolio Web",
+      "img": "https://i.imgur.com/x6eI8TY.jpg",
+      "description": "Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
+      "url": "http://www.google.com",
+      "gitHubUrl": "github.com"
     },
     {
       "id": 2,
-      "title":"Portfolio Web 2",
-      "img":"https://i.imgur.com/sQm3ptb.jpg",
-      "description":"Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
-      "url":"http://www.google.com",
-      "gitHubUrl":"github.com"
+      "title": "Portfolio Web 2",
+      "img": "https://i.imgur.com/sQm3ptb.jpg",
+      "description": "Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
+      "url": "http://www.google.com",
+      "gitHubUrl": "github.com"
     },
     {
       "id": 3,
-      "title":"Portfolio Web 3",
-      "img":"https://i.imgur.com/tVqhJeW.jpg",
-      "description":"Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
-      "url":"http://www.google.com",
-      "gitHubUrl":"github.com"
+      "title": "Portfolio Web 3",
+      "img": "https://i.imgur.com/tVqhJeW.jpg",
+      "description": "Confeccionado tanto en el Frontend como en el Backend, utilizando Angular, Java Spring Boot y SQL.",
+      "url": "http://www.google.com",
+      "gitHubUrl": "github.com"
     }
   ]
 }

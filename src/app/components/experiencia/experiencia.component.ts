@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { DragDrop } from '@angular/cdk/drag-drop';
+import { expe } from 'src/app/interfaces/expe';
+
 
 @Component({
   selector: 'app-experiencia',
@@ -8,7 +9,7 @@ import { DragDrop } from '@angular/cdk/drag-drop';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  experienceList:any;
+  experienceList: expe[];
   root:string = "experience"
   constructor(private datosPortfolio:PortfolioService) { }
 

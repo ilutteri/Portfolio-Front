@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service'
+import { PortfolioService } from 'src/app/services/portfolio.service';
+import { skillType } from 'src/app/interfaces/skillType';
 
 @Component({
   selector: 'app-habilidades',
@@ -7,8 +8,9 @@ import { PortfolioService } from 'src/app/services/portfolio.service'
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
-  skillList:any;
-  root:string = "skills"
+  skillList: skillType[];
+  private root:string = "skills"
+  
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
