@@ -7,32 +7,35 @@
         <i class="fas fa-plus"></i>
       </div>
       
-      <div *ngFor="let experience of experienceList" class="card mb-3 border-0" style="max-width: 450px">
-        <div class="row">
-          <div class="col" style="max-width:120px">
-            <img [src]="experience.img" class="img-fluid rounded-end" width="90" height="90" alt="oddity" style="margin-left:10px;">
-          </div>
-          <div class="col">
-        
-            <div class="edit text-end">
-              <i class="fas fa-pen fa-fw"></i>
-              <i class="fas fa-trash-alt fa-fw"></i>
+    
+        <div *ngFor="let experience of experienceList" class="border-0" style="max-width: 450px">
+          <div  class="row">
+            <div class="col" style="max-width:120px">
+              <img [src]="experience.img" class="img-fluid rounded-end" width="90" height="90" alt="oddity" style="margin-left:10px;">
             </div>
-        
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><h5> {{experience.position}}</h5></li>
-              <li class="list-group-item">
-              <dl>
-                <dd>{{experience.company}} - {{experience.mode}}</dd>
-                <dd>{{experience.start}} - {{experience.end}} - {{experience.timeElapsed}}</dd>
-                <dd>{{experience.ubication}}</dd>
-              </dl>
-            </li>
-           </ul>
-        
+            <div class="col">
+          
+              <div class="edit text-end">
+                <i class="fas fa-pen fa-fw"></i>
+                <i class="fas fa-trash-alt fa-fw"></i>
+              </div>
+          
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h5> {{experience.position}}</h5></li>
+                <li class="list-group-item">
+                <dl>
+                  <dd>{{experience.company}} - {{experience.mode}}</dd>
+                  <dd>{{experience.start}} - {{experience.end}} - {{experience.timeElapsed}}</dd>
+                  <dd>{{experience.ubication}}</dd>
+                </dl>
+              </li>
+            </ul>
+          
+            </div>
           </div>
         </div>
-      </div>
 
+
+    
     </div>
   </div>

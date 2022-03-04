@@ -10,6 +10,8 @@ import { HabilidadesComponent } from './components/habilidades/habilidades.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     HttpClientModule,
     CommonModule,
-
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

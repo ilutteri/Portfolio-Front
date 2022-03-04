@@ -13,4 +13,9 @@ export class PortfolioService {
   obtenerDatos(s:string):Observable<any>{
     return this.http.get(this.apiURL + s);
   }
+
+  delete(elemento:any, s:string):Observable<any>{
+    const url = `${this.apiURL + s}/${elemento.id}`
+    return this.http.delete<any>(url);
+  }
 }

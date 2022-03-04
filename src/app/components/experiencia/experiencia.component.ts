@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service'
+import { PortfolioService } from 'src/app/services/portfolio.service';
+import { DragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-experiencia',
