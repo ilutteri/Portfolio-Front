@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { eduItem } from 'src/app/interfaces/eduItem'
 import { EducationService } from 'src/app/services/education.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-educacion',
@@ -9,7 +10,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
-  educationList: eduItem[];
+
+  public educationList: eduItem[] = [];
+  public editEducation!: eduItem;
+  public deleteEducation!: eduItem;
+
   constructor(private educationService: EducationService) { }
 
   ngOnInit(): void {
@@ -20,6 +25,66 @@ export class EducacionComponent implements OnInit {
     this.educationService.getEducation().subscribe(data => {
       this.educationList = data;
     })
+  }
+
+  public onAddEducation(addForm: NgForm): void{
+    document.getElementById("add-education-form")!.click();
+    this.educationService.addEducation(addForm.value).subscribe(
+      (response: eduItem) => {
+        console.log(response);
+        this.getEducation();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public onEditEducation(education: eduItem): void {
+    this.educationService.updateEducation(education).subscribe(
+      (response: eduItem) => {
+        console.log(response);
+        this.getEducation();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeleteEducation(educationId: number): void {
+    this.educationService.deleteEducation(educationId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getEducation();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(education: eduItem, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none'
+    button.setAttribute('data-bs-toggle', 'modal');
+    if(mode === 'add') {
+      button.setAttribute('data-bs-target', '#addEducationModal');
+    }
+    if(mode === 'edit') {
+      this.editEducation = education;
+      button.setAttribute('data-bs-target', '#editEducationModal');
+    }
+    if(mode === 'delete') {
+      this.deleteEducation = education;
+      button.setAttribute('data-bs-target', '#deleteEducationModal');
+    }
+    container?.appendChild(button);
+    button.click();
   }
 
 }
