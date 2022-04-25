@@ -2,10 +2,9 @@ export interface expe{
     id: number,
     position: string,
     company: string
-    img: string,
+    imgURL: string,
     mode: string,
     start: string,
     end: string,
-    timeElapsed: string,
-    ubication: string,
+    location: string,
 }

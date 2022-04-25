@@ -11,6 +11,7 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,13 +22,15 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ExperienciaComponent,
     EducacionComponent,
     HabilidadesComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     DragDropModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

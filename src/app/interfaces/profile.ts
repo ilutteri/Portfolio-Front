@@ -1,7 +1,7 @@
 export interface profile {
     name: String;
     title: String;
-    bannerurl: String;
-    profileurl: String;
+    bannerURL: String;
+    profileURL: String;
     about: String;
 }

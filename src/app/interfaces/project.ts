@@ -1,8 +1,8 @@
 export interface project {
     id: number,
     title: string;
-    img:string;
-    description: string;
+    imgURL:string;
+    about: string;
     url: string;
-    gitHubUrl: string
+    gitHubURL: string
 }

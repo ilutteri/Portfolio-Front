@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service';
+import { ProfileService } from 'src/app/services/profile.service'
 import { profile } from '../../interfaces/profile';
 
 @Component({
@@ -8,15 +8,19 @@ import { profile } from '../../interfaces/profile';
   styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent implements OnInit {
-  portfolio:profile; 
-  root:string = "profile";
-  
-  constructor(private datosPortfolio:PortfolioService) { }
+  profile: profile;
+
+
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos(this.root).subscribe(data => {
-    this.portfolio = data;
-  })
-}
+    this.getProfile();
+  }
+
+  public getProfile(): void {
+    this.profileService.getProfile().subscribe(data => {
+      this.profile = data[0];
+    })
+  }
 
 }

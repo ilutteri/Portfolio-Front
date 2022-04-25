@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import { skillType } from 'src/app/interfaces/skillType';
+import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
   selector: 'app-habilidades',
@@ -9,14 +9,18 @@ import { skillType } from 'src/app/interfaces/skillType';
 })
 export class HabilidadesComponent implements OnInit {
   skillList: skillType[];
-  private root:string = "skills"
   
-  constructor(private datosPortfolio:PortfolioService) { }
+  constructor(private skillService:SkillsService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos(this.root).subscribe(data => {
+    this.getSkills();
+  }
+
+  public getSkills():void{
+    this.skillService.getSkills().subscribe(data => {
       this.skillList = data;
     })
+
   }
 
 }

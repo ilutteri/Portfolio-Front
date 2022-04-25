@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { project } from 'src/app/interfaces/project';
-import { PortfolioService } from 'src/app/services/portfolio.service';
+import { ProjectsService } from 'src/app/services/projects.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-proyectos',
@@ -9,18 +10,16 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 })
 export class ProyectosComponent implements OnInit {
   public projectList: project[];
-  private root:string = "projects";
-
-  constructor(private datosPortfolio:PortfolioService) { }
-  
+  constructor(private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos(this.root).subscribe(data =>{
+    this.getProjects();
+  }
+
+  public getProjects(): void {
+    this.projectsService.getProject().subscribe(data => {
       this.projectList = data;
-      console.log(this.projectList)
     })
-  };
-
-
+  }
 
 }

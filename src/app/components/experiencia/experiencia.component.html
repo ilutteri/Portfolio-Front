@@ -1,41 +1,96 @@
-<div class="card mb-3">   <!--Experiencia Laboral-->
-  
-    <div class="card-body">
-    
-      <div class="d-flex justify-content-between mb-4" > 
-        <h2>Experiencia</h2>
-        <i class="fas fa-plus"></i>
+<div class="card mb-3" id="main-container">
+  <!--Experiencia Laboral-->
+
+  <div class="card-body">
+
+    <div class="d-flex justify-content-between mb-4">
+      <h2>Experiencia</h2>
+      
+        <i type="button" class="fas fa-plus"data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+   
+    </div>
+
+
+    <div *ngFor="let experience of experienceList" class="border-0" style="max-width: 450px">
+      <div class="row">
+        <div class="col" style="max-width:120px">
+          <img [src]="experience.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="oddity"
+            style="margin-left:10px;">
+        </div>
+        <div class="col">
+
+          <div class="edit text-end">
+            <i class="fas fa-pen fa-fw"></i>
+            <i class="fas fa-trash-alt fa-fw"></i>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5> {{experience.position}}</h5>
+            </li>
+            <li class="list-group-item">
+              <dl>
+                <dd>{{experience.company}} - {{experience.mode}}</dd>
+                <dd>{{experience.start}} - {{experience.end}} </dd>
+                <dd>{{experience.location}}</dd>
+              </dl>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddExpe(addForm)">
+          <div class="form-group">
+            <label for="name">Position</label>
+            <input type="text" ngModel name="position" class="form-control" id="position" placeholder="Posición"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="company">Empresa</label>
+            <input type="text" ngModel name="company" class="form-control" id="company" placeholder="Empresa"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="imgURL">URL de la Imagen</label>
+            <input type="text" ngModel name="imgURL" class="form-control" id="imgURL" placeholder="URL de Imagen"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Mode</label>
+            <input type="text" ngModel name="phone" class="form-control" id="mode" placeholder="Phone" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Fecha de Inicio</label>
+            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Fecha de Inicio"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Fecha de Finalizacion</label>
+            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="Fecha de Finalizacion"
+              required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+        </form>
       </div>
       
-    
-        <div *ngFor="let experience of experienceList" class="border-0" style="max-width: 450px">
-          <div  class="row">
-            <div class="col" style="max-width:120px">
-              <img [src]="experience.img" class="img-fluid rounded-end" width="90" height="90" alt="oddity" style="margin-left:10px;">
-            </div>
-            <div class="col">
-          
-              <div class="edit text-end">
-                <i class="fas fa-pen fa-fw"></i>
-                <i class="fas fa-trash-alt fa-fw"></i>
-              </div>
-          
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><h5> {{experience.position}}</h5></li>
-                <li class="list-group-item">
-                <dl>
-                  <dd>{{experience.company}} - {{experience.mode}}</dd>
-                  <dd>{{experience.start}} - {{experience.end}} - {{experience.timeElapsed}}</dd>
-                  <dd>{{experience.ubication}}</dd>
-                </dl>
-              </li>
-            </ul>
-          
-            </div>
-          </div>
-        </div>
-
-
-    
     </div>
   </div>
+</div>
+
+  </div>
+</div>
