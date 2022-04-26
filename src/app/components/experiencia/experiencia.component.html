@@ -1,13 +1,11 @@
 <div class="card mb-3" id="main-container">
   <!--Experiencia Laboral-->
 
-  <div class="card-body">
+  <div class="card-body" >
 
     <div class="d-flex justify-content-between mb-4">
       <h2>Experiencia</h2>
-      
-        <i type="button" class="fas fa-plus"data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-   
+      <i type="button" class="fas fa-plus" (click)="onOpenModal(null!, 'add')"></i>
     </div>
 
 
@@ -20,8 +18,8 @@
         <div class="col">
 
           <div class="edit text-end">
-            <i class="fas fa-pen fa-fw"></i>
-            <i class="fas fa-trash-alt fa-fw"></i>
+            <i class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')"></i>
+            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')"></i>
           </div>
 
           <ul class="list-group list-group-flush">
@@ -40,57 +38,131 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="addExperienceModalLabel">Agregar Experiencia</h5>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddExpe(addForm)">
+        <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)">
           <div class="form-group">
-            <label for="name">Position</label>
+            <label for="position">Posición</label>
             <input type="text" ngModel name="position" class="form-control" id="position" placeholder="Posición"
               required>
           </div>
           <div class="form-group">
-            <label for="company">Empresa</label>
-            <input type="text" ngModel name="company" class="form-control" id="company" placeholder="Empresa"
-              required>
+            <label for="company">Compañía</label>
+            <input type="text" ngModel name="company" class="form-control" id="company" placeholder="Compañía" required>
           </div>
           <div class="form-group">
-            <label for="imgURL">URL de la Imagen</label>
-            <input type="text" ngModel name="imgURL" class="form-control" id="imgURL" placeholder="URL de Imagen"
-              required>
+            <label for="start">Inicio</label>
+            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Inicio" required>
           </div>
           <div class="form-group">
-            <label for="phone">Mode</label>
-            <input type="text" ngModel name="phone" class="form-control" id="mode" placeholder="Phone" required>
+            <label for="end">Final</label>
+            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="Final" required>
           </div>
           <div class="form-group">
-            <label for="phone">Fecha de Inicio</label>
-            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Fecha de Inicio"
-              required>
+            <label for="mode">Tipo</label>
+            <input type="text" ngModel name="state" class="form-control" id="mode" placeholder="Tipo" required>
           </div>
           <div class="form-group">
-            <label for="phone">Fecha de Finalizacion</label>
-            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="Fecha de Finalizacion"
-              required>
+            <label for="location">Ubicación</label>
+            <input type="text" ngModel name="state" class="form-control" id="location" placeholder="Estado" required>
+          </div>
+          <div class="form-group">
+            <label for="imgURL">Img URL</label>
+            <input type="text" ngModel name="imageURL" class="form-control" id="imgURL" placeholder="Img URL" required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+            <button type="button" id="add-experience-form" class="btn btn-outline-primary"
+              data-bs-dismiss="modal">Cerrar</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-info"
+              data-bs-dismiss="modal">Guardar Cambios</button>
           </div>
         </form>
       </div>
-      
     </div>
   </div>
 </div>
 
+<div class="modal fade" id="editExperienceModal" tabindex="-1" aria-labelledby="editExperienceModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editExperienceModalLabel">Editar {{editExperience?.position}}</h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="establishment">Posición</label>
+            <input type="text" ngModel="{{editExperience?.position}}" name="name" class="form-control" id="position"
+              placeholder="Posición">
+          </div>
+          <input type="hidden" ngModel="{{editExperience?.id}}" name="id" class="form-control" id="id"
+            placeholder="Posición">
+          <div class="form-group">
+            <label for="company">Compañia</label>
+            <input type="text" ngModel="{{editExperience?.company}}" name="title" class="form-control" id="company"
+              placeholder="Compañia">
+          </div>
+          <div class="form-group">
+            <label for="start">Comienzo</label>
+            <input type="text" ngModel="{{editExperience?.start}}" name="start" class="form-control" id="start"
+              placeholder="start">
+          </div>
+          <div class="form-group">
+            <label for="end">Final</label>
+            <input type="text" ngModel="{{editExperience?.end}}" name="end" class="form-control" id="end"
+              placeholder="end">
+          </div>
+          <div class="form-group">
+            <label for="state">Tipo</label>
+            <input type="text" ngModel="{{editExperience?.mode}}" name="state" class="form-control" id="country"
+              placeholder="Estado">
+          </div>
+          <div class="form-group">
+            <label for="location">Ubicación</label>
+            <input type="text" ngModel="{{editExperience?.location}}" name="location" class="form-control" id="country"
+              placeholder="Ubicación">
+          </div>
+          <div class="form-group">
+            <label for="imgURL">Image URL</label>
+            <input type="text" ngModel="{{editExperience?.imgURL}}" name="imgURL" class="form-control" id="imgURL"
+              placeholder="Image URL">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button (click)="onEditExperience(editForm.value)" data-bs-dismiss="modal"
+              class="btn btn-outline-info">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteExperienceModal" tabindex="-1" aria-labelledby="deleteExperienceModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Experience</h5>
+      </div>
+      <div class="modal-body">
+        <p>¿Está seguro de borrar? {{deleteExperience?.position}}?</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">No</button>
+          <button (click)="onDeleteExperience(deleteExperience?.id!)" class="btn btn-outline-danger"
+            data-bs-dismiss="modal">Sis</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

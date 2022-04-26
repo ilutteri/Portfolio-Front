@@ -11,8 +11,12 @@ import { ExperienceService } from 'src/app/services/experience.service';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  experienceList: expe[];
-  constructor(private experienceService:ExperienceService) { }
+
+  public experienceList: expe[];
+  public editExperience!: expe;
+  public deleteExperience!: expe;
+
+  constructor(private experienceService: ExperienceService) { }
 
   ngOnInit(): void {
     this.getExperience();
@@ -23,9 +27,9 @@ export class ExperienciaComponent implements OnInit {
       this.experienceList = data;
     })
   }
-  
-  public onAddExpe(addForm: NgForm): void {
-    document.getElementById('exampleModal').click();
+
+  public onAddExperience(addForm: NgForm): void {
+    document.getElementById('add-experience-form').click();
     this.experienceService.addExperience(addForm.value).subscribe(
       (response) => {
         console.log(response);
@@ -39,25 +43,52 @@ export class ExperienciaComponent implements OnInit {
     );
   }
 
+  public onEditExperience(experience: expe): void {
+    this.experienceService.updateExperience(experience).subscribe(
+      (response: expe) => {
+        console.log(response);
+        this.getExperience();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
-  public onOpenModal(expe: expe, mode: string): void {
+  public onDeleteExperience(experienceId: number): void {
+    this.experienceService.deleteExperience(experienceId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getExperience();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+  public onOpenModal(experience: expe, mode: string): void {
+    
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-bs-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-target', '#addExpeModal');
+      console.log('work bitch')
+      button.setAttribute('data-bs-target', '#addExperienceModal');
     }
-    // if (mode === 'edit') {
-    //   this.editEmployee = employee;
-    //   button.setAttribute('data-target', '#updateEmployeeModal');
-    // }
-    // if (mode === 'delete') {
-    //   this.deleteEmployee = employee;
-    //   button.setAttribute('data-target', '#deleteEmployeeModal');
-    // }
+    if (mode === 'edit') {
+      this.editExperience = experience;
+      button.setAttribute('data-bs-target', '#editExperienceModal');
+    }
+    if (mode === 'delete') {
+      this.deleteExperience = experience;
+      button.setAttribute('data-bs-target', '#deleteExperienceModal');
+    }
     container.appendChild(button);
     button.click();
   }
+
 }
