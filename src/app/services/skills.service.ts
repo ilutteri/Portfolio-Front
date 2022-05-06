@@ -16,16 +16,16 @@ export class SkillsService {
     return this.http.get<skillType[]>(`${this.apiURL}skillType/get`);
   }
 
-  public addSkills(experience: skillType): Observable<skillType> {
+  public addSkill(experience: skillType): Observable<skillType> {
     return this.http.post<skillType>(`${this.apiURL}skillType/add`, experience);
   }
 
-  public updateSkills(skillType: skillType): Observable<skillType> {
+  public updateSkill(skillType: skillType): Observable<skillType> {
     return this.http.put<skillType>(`${this.apiURL}skillType/update`, skillType);
   }
 
-  public deleteExperience(experienceId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiURL}skillType/delete/${experienceId}`);
+  public deleteSkill(skillId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiURL}skillType/delete/${skillId}`);
   }
 
 }

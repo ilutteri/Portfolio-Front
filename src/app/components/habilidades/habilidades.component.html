@@ -1,36 +1,114 @@
-<div class="card h-100">   <!--Habilidades-->
-  
+<div class="card h-100">
+  <!--Habilidades-->
+
   <div class="card-body">
-    
-      <div class="d-flex justify-content-between" style="margin-top:5px;" > 
-        <h2>Habilidades</h2>
-        <i class="fas fa-plus"></i>
-      </div>
-      
-      <div *ngFor="let skills of skillList" class="card border-0 m-3">
+
+    <div style="margin-top:5px;">
+      <h2>Habilidades</h2>
+
+    </div>
+
+    <div *ngFor="let skills of skillList" class="card border-0 m-3">
+      <div class="d-flex justify-content-between align-items-center">
         <h5 class="mt-4">{{skills.type}}</h5>
-        <div *ngFor="let skill of skills.list" class="card-body">
-          <div  class="d-flex p-0 justify-content-between">
-            <p class="fs-5 m-0 fw-light">
-              {{skill.name}}
-            </p> 
-            <div >
-                <i class="fas fa-pen fa-fw"></i>
-                <i class="fas fa-trash-alt fa-fw"></i>
-            </div>
+        <i class="fas fa-plus" (click)="onOpenModal(null!, 'add', skills)"></i>
+      </div>
+      <div *ngFor="let skill of skills.list" class="card-body">
+        <div class="d-flex p-0 justify-content-between">
+          <p class="fs-5 m-0 fw-light">
+            {{skill.name}}
+          </p>
+          <div>
+            <i class="fas fa-pen fa-fw" (click)="onOpenModal(skill, 'edit', skills)"></i>
+            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(skill, 'delete', skills)"></i>
           </div>
-          
-            <div class="progress" style="height: 5px; margin-top: 7px;">
-            <div class="progress-bar bg-dark" role="progressbar" [ngStyle]="{'width': skill.progress + '%'}" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            
+        </div>
+
+        <div class="progress" style="height: 5px; margin-top: 7px;">
+          <div class="progress-bar bg-dark" role="progressbar" [ngStyle]="{'width': skill.progress + '%'}"
+            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
       </div>
 
-</div>
+    </div>
 
+  </div>
 
-      
-  
- 
+  <div class="modal fade" id="addSkillModal" tabindex="-1" aria-labelledby="addSkillModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSkillModalLabel">Agregar Educación</h5>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm, editST)">
+            <div class="form-group">
+              <label for="Name">Nombre</label>
+              <input type="text" ngModel name="name" class="form-control" id="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="progress">Progreso</label>
+              <input type="text" ngModel name="progress" class="form-control" id="progress" placeholder="Progreso"
+                required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="add-skill-form" class="btn btn-outline-primary"
+                data-bs-dismiss="modal">Cerrar</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-info"
+                data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteSkillModal" tabindex="-1" aria-labelledby="deleteSkillModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Borrar Habilidad</h5>
+        </div>
+        <div class="modal-body">
+          <p>¿Está seguro de borrar {{deleteSkill?.name}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">No</button>
+            <button (click)="onDeleteSkill(deleteSkill?.id!, editST)" class="btn btn-outline-danger"
+              data-bs-dismiss="modal">Si</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editSkillModal" tabindex="-1" aria-labelledby="editSkillModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editSkillModalLabel">Editar {{editSkill?.name}}</h5>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="establishment">Nombre</label>
+              <input type="text" ngModel="{{editSkill?.name}}" name="name" class="form-control" id="name"
+                placeholder="name">
+            </div>
+            <div class="form-group">
+              <label for="progress">Progreso</label>
+              <input type="text" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="progress"
+                placeholder="Title">
+            </div>
+            <input type="hidden" ngModel="{{editSkill?.id}}" name="id" class="form-control" id="id" placeholder="Title">
+            <div class="modal-footer">
+              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+              <button (click)="onEditSkill(editForm.value, editST)" data-bs-dismiss="modal"
+                class="btn btn-outline-info">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
