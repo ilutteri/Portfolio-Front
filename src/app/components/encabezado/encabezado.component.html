@@ -1,15 +1,67 @@
-<div class="card mb-3">    <!--Banner / Profile / Review-->
-    <img [src]="profile.bannerURL" class="responsive" id="banner" alt="Mountains And Clouds">
-    <img [src]="profile.profileURL" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
-    <div class="card-body">
-      
-        <div class="row"> 
-        <h5 class="card-title fs-2" > {{profile.name}} </h5>
+<div class="card mb-3" id="main-container">
+  <!--Banner / Profile / Review-->
+  <img *ngIf="profile" [src]="profile.bannerURL" class="responsive" id="banner" alt="Mountains And Clouds">
+  <img *ngIf="profile" [src]="profile.profileURL" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col">
+        <h5 class="card-title fs-2"> {{profile.name}} </h5>
         <p class="card-text fs-3"><b>{{profile.title}}</b></p>
-       </div>
-        <div class="row pt-3" id="about">
-        <p class="fs-6 fw-light">{{profile.about}}</p>
-       
+      </div>
+      <div class="col d-flex align-items-end flex-column bd-highlight mb-3">
+        <i class="fas fa-pen fa-fw p-2 bd-highlight" (click)="onOpenModal(profile, 'edit')"></i>
+      </div>
+    </div>
+    
+    <div class="row pt-3" id="about">
+      
+      <p class="fs-6 fw-light">{{profile.about}}</p>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" ngModel="{{editProfile?.name}}" name="name" class="form-control" id="name"
+              placeholder="Nombre Completo">
+          </div>
+          <input type="hidden" ngModel="{{editProfile?.id}}" name="id" class="form-control" id="id" placeholder="id">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" ngModel="{{editProfile?.title}}" name="title" class="form-control" id="title"
+              placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="bannerURL">URL del Banner</label>
+            <input type="text" ngModel="{{editProfile?.bannerURL}}" name="bannerURL" class="form-control" id="bannerURL"
+              placeholder="URL de Banner">
+          </div>
+          <div class="form-group">
+            <label for="profileURL">URL de la Foto de Perfil</label>
+            <input type="text" ngModel="{{editProfile?.profileURL}}" name="profileURL" class="form-control" id="profileURL" placeholder="URL de la foto de Perfil">
+          </div>
+          <div class="form-group">
+            <label for="profileURL">Sobre Mi: </label>
+            <input type="text" ngModel="{{editProfile?.about}}" name="about" class="form-control" id="aboutMe" placeholder="Una breve descripción sobre ti">
+          </div>
+         
+          <div class="modal-footer">
+            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button (click)="onEditProfile(editForm.value)" data-bs-dismiss="modal" class="btn btn-outline-info">Guardar
+              Cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
+</div>

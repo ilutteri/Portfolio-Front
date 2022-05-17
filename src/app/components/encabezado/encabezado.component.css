@@ -3,3 +3,9 @@
                                margin-left:60%;
                            }
 }
+
+.fa-pen{
+    font-size: 2em;
+    margin-right:5px;
+    align-self: flex-end;
+  }
