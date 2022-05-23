@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service'
+import { TokenService } from 'src/app/services/token.service';
 import { profile } from '../../interfaces/profile';
 
 @Component({
@@ -10,11 +11,19 @@ import { profile } from '../../interfaces/profile';
 })
 export class EncabezadoComponent implements OnInit {
   profile: profile;
-  editProfile! : profile;
+  editProfile!: profile;
+  isLogged: boolean = false;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(
+    private profileService: ProfileService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
     this.getProfile();
   }
 

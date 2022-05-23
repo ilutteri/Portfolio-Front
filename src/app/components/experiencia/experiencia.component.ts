@@ -3,6 +3,7 @@ import { expe } from 'src/app/interfaces/expe';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -15,10 +16,19 @@ export class ExperienciaComponent implements OnInit {
   public experienceList: expe[];
   public editExperience!: expe;
   public deleteExperience!: expe;
+  isLogged: boolean = false;
 
-  constructor(private experienceService: ExperienceService) { }
+
+  constructor(
+    private experienceService: ExperienceService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
     this.getExperience();
   }
 

@@ -11,7 +11,7 @@
     <div *ngFor="let skills of skillList" class="card border-0 m-3">
       <div class="d-flex justify-content-between align-items-center">
         <h5 class="mt-4">{{skills.type}}</h5>
-        <i class="fas fa-plus" (click)="onOpenModal(null!, 'add', skills)"></i>
+        <i class="fas fa-plus" (click)="onOpenModal(null!, 'add', skills)" *ngIf="isLogged"></i>
       </div>
       <div *ngFor="let skill of skills.list" class="card-body">
         <div class="d-flex p-0 justify-content-between">
@@ -19,8 +19,8 @@
             {{skill.name}}
           </p>
           <div>
-            <i class="fas fa-pen fa-fw" (click)="onOpenModal(skill, 'edit', skills)"></i>
-            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(skill, 'delete', skills)"></i>
+            <i class="fas fa-pen fa-fw" (click)="onOpenModal(skill, 'edit', skills)" *ngIf="isLogged"></i>
+            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(skill, 'delete', skills)" *ngIf="isLogged"></i>
           </div>
         </div>
 
@@ -54,7 +54,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" id="add-skill-form" class="btn btn-outline-primary"
-                data-bs-dismiss="modal">Cerrar</button>
+                data-bs-dismiss="modal" >Cerrar</button>
               <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-info"
                 data-bs-dismiss="modal">Guardar</button>
             </div>

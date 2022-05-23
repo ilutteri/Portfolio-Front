@@ -1,10 +1,57 @@
-<div class="d-flex bd-highlight bg-dark">                   <!--Navbar-->
-    <div class="p-2 flex-grow-1 bd-highlight">
-      <img src="assets/img/logoAp.png" width="125" height="45" alt="argprod">
+<div class="d-flex bd-highlight bg-dark">
+  <!--Navbar-->
+  <div class="p-2 flex-grow-1 bd-highlight">
+    <img src="assets/img/logoAp.png" width="125" height="45" alt="argprod">
+  </div>
+  <div class="bd-highlight p-2" style="float:none;margin:auto">
+    <a href="https://github.com/ilutteri" title="Github Profile" target="_blank"><i type="button"
+        class="fab fa-github fa-fw" style="font-size: 2em;color:white"></i></a>
+    <a href="https://www.linkedin.com/in/ignacio-lutteri/" title="Linkedin Profile" target="_blank"><i type="button"
+        class="fab fa-linkedin fa-fw" style="font-size: 2em; color:white"></i></a>
+  </div>
+  <!-- <div class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
+       (click)="onOpenModal()" *ngIf="!isLogged">Login</button></div>
+
+  <div class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
+        (click)="onLogOut()" *ngIf="isLogged">Logout</button></div> -->
+        
+  <div class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
+  (click)="onOpenModal()" *ngIf="!isLogged ; else userloggedOut">Login</button></div>
+
+  <ng-template #userloggedOut class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
+    (click)="onLogOut()" *ngIf="isLogged">Logout</button></ng-template>
+  
+
+</div>
+
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModal">Ingresar</h5>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onLogin()">
+          <div class="form-group">
+            <label for="nombreUsuario">Nombre de Usuario</label>
+            <input type="text" [(ngModel)]="nombreUsuario" name="nombreUsuario" class="form-control" id="nombreUsuario"
+              placeholder="Usuario" required>
+          </div>
+          <div class="form-group">
+            <label for="password"> Contraseña</label>
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password"
+              placeholder="Contraseña" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="add-skill-form" class="btn btn-outline-primary"
+              data-bs-dismiss="modal">Cerrar</button>
+            <button [disabled]="f.invalid" type="submit" class="btn btn-outline-info"
+              data-bs-dismiss="modal">Ingresar</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="bd-highlight p-2" style="float:none;margin:auto">
-      <a  href="https://github.com/ilutteri" title="Github Profile" target="_blank"><i type="button" class="fab fa-github fa-fw" style="font-size: 2em;color:white"></i></a>
-      <a  href="https://www.linkedin.com/in/ignacio-lutteri/" title="Linkedin Profile" target="_blank"><i type="button" class="fab fa-linkedin fa-fw" style="font-size: 2em; color:white"></i></a>
-    </div>
-    <div class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt">Login</button></div>
-  </div>   
+  </div>
+</div>

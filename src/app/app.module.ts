@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
+
 
 
 @NgModule({
@@ -32,7 +34,7 @@ import { FormsModule } from '@angular/forms';
     DragDropModule,
     FormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

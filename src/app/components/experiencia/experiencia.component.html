@@ -5,7 +5,7 @@
 
     <div class="d-flex justify-content-between mb-4">
       <h2>Experiencia</h2>
-      <i type="button" class="fas fa-plus" (click)="onOpenModal(null!, 'add')"></i>
+      <i type="button" class="fas fa-plus" (click)="onOpenModal(null!, 'add')" *ngIf="isLogged"></i>
     </div>
 
 
@@ -18,8 +18,8 @@
         <div class="col">
 
           <div class="edit text-end">
-            <i class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')"></i>
-            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')"></i>
+            <i class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')" *ngIf="isLogged"></i>
+            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')" *ngIf="isLogged"></i>
           </div>
 
           <ul class="list-group list-group-flush">

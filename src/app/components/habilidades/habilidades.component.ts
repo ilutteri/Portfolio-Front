@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { skillType } from 'src/app/interfaces/skillType';
 import { SkillsService } from 'src/app/services/skills.service';
 import { skill } from 'src/app/interfaces/skill';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-habilidades',
@@ -15,10 +16,17 @@ export class HabilidadesComponent implements OnInit {
   public editST: skillType;
   public editSkill!: skill;
   public deleteSkill!: skill;
+  isLogged: boolean = false;
   
-  constructor(private skillService:SkillsService) { }
+  constructor(private skillService:SkillsService,
+              private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
     this.getSkills();
   }
 
