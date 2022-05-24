@@ -8,38 +8,34 @@
       <i type="button" class="fas fa-plus" (click)="onOpenModal(null!, 'add')" *ngIf="isLogged"></i>
     </div>
 
-
-    
-
-
-      <div *ngFor="let education of educationList" class="card mb-4 border-0" style="max-width: 450px">
-        <div class="row">
-          <div class="col" style="max-width:120px">
-            <img [src]="education.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="educ"
-              style="margin-left:10px;">
+    <div *ngFor="let education of educationList" class="card mb-4 border-0" style="max-width: 450px">
+      <div class="row">
+        <div class="col" style="max-width:120px">
+          <img [src]="education.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="educ"
+            style="margin-left:10px;">
+        </div>
+        <div class="col">
+          <div class="edit text-end">
+            <i type="button" class="fas fa-pen fa-fw" (click)="onOpenModal(education, 'edit')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(education, 'delete')" *ngIf="isLogged"></i>
           </div>
-          <div class="col">
-            <div class="edit text-end">
-              <i class="fas fa-pen fa-fw" (click)="onOpenModal(education, 'edit')" *ngIf="isLogged"></i>
-              <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(education, 'delete')" *ngIf="isLogged"></i>
-            </div>
 
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <h5> {{education.name}}</h5>
-              </li>
-              <li class="list-group-item">
-                <dl>
-                  <dd>{{education.title}}</dd>
-                  <dd>{{education.start}} - {{education.end}} / {{education.state}}</dd>
-                </dl>
-              </li>
-            </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5> {{education.name}}</h5>
+            </li>
+            <li class="list-group-item">
+              <dl>
+                <dd>{{education.title}}</dd>
+                <dd>{{education.start}} - {{education.end}} / {{education.state}}</dd>
+              </dl>
+            </li>
+          </ul>
 
-          </div>
         </div>
       </div>
-    
+    </div>
+
   </div>
 </div>
 
@@ -54,27 +50,30 @@
         <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)">
           <div class="form-group">
             <label for="Name">Nombre</label>
-            <input type="text" ngModel name="name" class="form-control" id="nombre" placeholder="Nombre" required>
+            <input type="text" ngModel name="name" class="form-control" id="eduNombre" placeholder="Nombre" required>
           </div>
           <div class="form-group">
             <label for="title">Título</label>
-            <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Title" required>
+            <input type="text" ngModel name="title" class="form-control" id="eduTitle" placeholder="Title" required>
           </div>
           <div class="form-group">
             <label for="start">Mes de Inicio</label>
-            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Mes de Inicio" required>
+            <input type="text" ngModel name="start" class="form-control" id="eduStart" placeholder="Mes de Inicio"
+              required>
           </div>
           <div class="form-group">
             <label for="end">Mes de Finalización</label>
-            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="Mes de Finalización" required>
+            <input type="text" ngModel name="end" class="form-control" id="eduEnd" placeholder="Mes de Finalización"
+              required>
           </div>
           <div class="form-group">
             <label for="state">Estado</label>
-            <input type="text" ngModel name="state" class="form-control" id="state" placeholder="Estado" required>
+            <input type="text" ngModel name="state" class="form-control" id="eduState" placeholder="Estado" required>
           </div>
           <div class="form-group">
             <label for="imgURL">Imagen del Logo</label>
-            <input type="text" ngModel name="imgURL" class="form-control" id="imgURL" placeholder="URL de Imagen" required>
+            <input type="text" ngModel name="imgURL" class="form-control" id="eduImgURL" placeholder="URL de Imagen"
+              required>
           </div>
           <div class="modal-footer">
             <button type="button" id="add-education-form" class="btn btn-outline-primary"
@@ -99,34 +98,34 @@
         <form #editForm="ngForm">
           <div class="form-group">
             <label for="establishment">Nombre</label>
-            <input type="text" ngModel="{{editEducation?.name}}" name="name" class="form-control" id="name"
+            <input type="text" ngModel="{{editEducation?.name}}" name="name" class="form-control" id="edu-name"
               placeholder="name">
           </div>
-          <input type="hidden" ngModel="{{editEducation?.id}}" name="id" class="form-control" id="id"
+          <input type="hidden" ngModel="{{editEducation?.id}}" name="id" class="form-control" id="edu-id"
             placeholder="Title">
           <div class="form-group">
             <label for="title">Título</label>
-            <input type="text" ngModel="{{editEducation?.title}}" name="title" class="form-control" id="title"
+            <input type="text" ngModel="{{editEducation?.title}}" name="title" class="form-control" id="edu-title"
               placeholder="Título">
           </div>
           <div class="form-group">
             <label for="start">Mes de Inicio</label>
-            <input type="text" ngModel="{{editEducation?.start}}" name="start" class="form-control" id="start"
+            <input type="text" ngModel="{{editEducation?.start}}" name="start" class="form-control" id="edu-start"
               placeholder="start">
           </div>
           <div class="form-group">
             <label for="end">Mes de Finalización</label>
-            <input type="text" ngModel="{{editEducation?.end}}" name="end" class="form-control" id="end"
+            <input type="text" ngModel="{{editEducation?.end}}" name="end" class="form-control" id="edu-end"
               placeholder="end">
           </div>
           <div class="form-group">
             <label for="state">Estado</label>
-            <input type="text" ngModel="{{editEducation?.state}}" name="state" class="form-control" id="state"
+            <input type="text" ngModel="{{editEducation?.state}}" name="state" class="form-control" id="edu-state"
               placeholder="Estado">
           </div>
           <div class="form-group">
             <label for="imgURL">Imagen del Logo</label>
-            <input type="text" ngModel="{{editEducation?.imgURL}}" name="imgURL" class="form-control" id="imgURL"
+            <input type="text" ngModel="{{editEducation?.imgURL}}" name="imgURL" class="form-control" id="edu-imgURL"
               placeholder="URL de Imagen">
           </div>
           <div class="modal-footer">

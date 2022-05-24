@@ -18,8 +18,8 @@
         <div class="col">
 
           <div class="edit text-end">
-            <i class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')" *ngIf="isLogged"></i>
-            <i class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')" *ngIf="isLogged"></i>
           </div>
 
           <ul class="list-group list-group-flush">
@@ -52,32 +52,32 @@
         <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)">
           <div class="form-group">
             <label for="position">Posición</label>
-            <input type="text" ngModel name="position" class="form-control" id="position" placeholder="Posición"
+            <input type="text" ngModel name="position" class="form-control" id="expPosition" placeholder="Posición"
               required>
           </div>
           <div class="form-group">
             <label for="company">Compañía</label>
-            <input type="text" ngModel name="company" class="form-control" id="company" placeholder="Compañía" required>
+            <input type="text" ngModel name="company" class="form-control" id="expCompany" placeholder="Compañía" required>
           </div>
           <div class="form-group">
             <label for="start">Inicio</label>
-            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Inicio" required>
+            <input type="text" ngModel name="start" class="form-control" id="expStart" placeholder="Inicio" required>
           </div>
           <div class="form-group">
             <label for="end">Final</label>
-            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="Final" required>
+            <input type="text" ngModel name="end" class="form-control" id="expEnd" placeholder="Final" required>
           </div>
           <div class="form-group">
             <label for="mode">Tipo</label>
-            <input type="text" ngModel name="state" class="form-control" id="mode" placeholder="Tipo" required>
+            <input type="text" ngModel name="mode" class="form-control" id="expMode" placeholder="Tipo" required>
           </div>
           <div class="form-group">
             <label for="location">Ubicación</label>
-            <input type="text" ngModel name="state" class="form-control" id="location" placeholder="Estado" required>
+            <input type="text" ngModel name="state" class="form-control" id="expLocation" placeholder="Estado" required>
           </div>
           <div class="form-group">
             <label for="imgURL">Img URL</label>
-            <input type="text" ngModel name="imageURL" class="form-control" id="imgURL" placeholder="Img URL" required>
+            <input type="text" ngModel name="imageURL" class="form-control" id="expimgURL" placeholder="Img URL" required>
           </div>
           <div class="modal-footer">
             <button type="button" id="add-experience-form" class="btn btn-outline-primary"
@@ -102,39 +102,39 @@
         <form #editForm="ngForm">
           <div class="form-group">
             <label for="establishment">Posición</label>
-            <input type="text" ngModel="{{editExperience?.position}}" name="name" class="form-control" id="position"
+            <input type="text" ngModel="{{editExperience?.position}}" name="position" class="form-control" id="expPosition"
               placeholder="Posición">
           </div>
-          <input type="hidden" ngModel="{{editExperience?.id}}" name="id" class="form-control" id="id"
+          <input type="hidden" ngModel="{{editExperience?.id}}" name="id" class="form-control" id="expId"
             placeholder="Posición">
           <div class="form-group">
             <label for="company">Compañia</label>
-            <input type="text" ngModel="{{editExperience?.company}}" name="title" class="form-control" id="company"
+            <input type="text" ngModel="{{editExperience?.company}}" name="title" class="form-control" id="expCompany"
               placeholder="Compañia">
           </div>
           <div class="form-group">
             <label for="start">Comienzo</label>
-            <input type="text" ngModel="{{editExperience?.start}}" name="start" class="form-control" id="start"
+            <input type="text" ngModel="{{editExperience?.start}}" name="start" class="form-control" id="expStart"
               placeholder="start">
           </div>
           <div class="form-group">
             <label for="end">Final</label>
-            <input type="text" ngModel="{{editExperience?.end}}" name="end" class="form-control" id="end"
+            <input type="text" ngModel="{{editExperience?.end}}" name="end" class="form-control" id="expEnd"
               placeholder="end">
           </div>
           <div class="form-group">
-            <label for="state">Tipo</label>
-            <input type="text" ngModel="{{editExperience?.mode}}" name="state" class="form-control" id="country"
+            <label for="mode">Tipo</label>
+            <input type="text" ngModel="{{editExperience?.mode}}" name="mode" class="form-control" id="expMode"
               placeholder="Estado">
           </div>
           <div class="form-group">
             <label for="location">Ubicación</label>
-            <input type="text" ngModel="{{editExperience?.location}}" name="location" class="form-control" id="country"
+            <input type="text" ngModel="{{editExperience?.location}}" name="location" class="form-control" id="expCountry"
               placeholder="Ubicación">
           </div>
           <div class="form-group">
             <label for="imgURL">Image URL</label>
-            <input type="text" ngModel="{{editExperience?.imgURL}}" name="imgURL" class="form-control" id="imgURL"
+            <input type="text" ngModel="{{editExperience?.imgURL}}" name="imgURL" class="form-control" id="expImgURL"
               placeholder="Image URL">
           </div>
           <div class="modal-footer">
@@ -160,7 +160,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">No</button>
           <button (click)="onDeleteExperience(deleteExperience?.id!)" class="btn btn-outline-danger"
-            data-bs-dismiss="modal">Sis</button>
+            data-bs-dismiss="modal">Si</button>
         </div>
       </div>
     </div>
