@@ -12,14 +12,14 @@
     <div *ngFor="let experience of experienceList" class="border-0" style="max-width: 450px">
       <div class="row">
         <div class="col" style="max-width:120px">
-          <img [src]="experience.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="oddity"
+          <img [src]="experience.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="Company Logo"
             style="margin-left:10px;">
         </div>
         <div class="col">
 
           <div class="edit text-end">
-            <i type="button" class="fas fa-pen fa-fw" (click)="onOpenModal(null!, 'edit')" *ngIf="isLogged"></i>
-            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(null!, 'delete')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-pen fa-fw" (click)="onOpenModal(experience, 'edit')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(experience, 'delete')" *ngIf="isLogged"></i>
           </div>
 
           <ul class="list-group list-group-flush">
@@ -109,7 +109,7 @@
             placeholder="Posición">
           <div class="form-group">
             <label for="company">Compañia</label>
-            <input type="text" ngModel="{{editExperience?.company}}" name="title" class="form-control" id="expCompany"
+            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control" id="expCompany"
               placeholder="Compañia">
           </div>
           <div class="form-group">
@@ -138,8 +138,8 @@
               placeholder="Image URL">
           </div>
           <div class="modal-footer">
-            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
-            <button (click)="onEditExperience(editForm.value)" data-bs-dismiss="modal"
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button [disabled]="addForm.invalid" (click)="onEditExperience(editForm.value)" data-bs-dismiss="modal"
               class="btn btn-outline-info">Guardar Cambios</button>
           </div>
         </form>

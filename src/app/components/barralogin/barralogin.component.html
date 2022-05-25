@@ -1,23 +1,27 @@
-<div class="d-flex bd-highlight bg-dark">
-  <!--Navbar-->
-  <div class="p-2 flex-grow-1 bd-highlight">
-    <a href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa" title="Argentina Programa" target="_blank"><img src="assets/img/logoAp.png" width="125" height="45" alt="argprod"></a>
-  </div>
-  <div class="bd-highlight p-2" style="float:none;margin:auto">
-    <a href="https://github.com/ilutteri" title="Github Profile" target="_blank"><i type="button"
-        class="fab fa-github fa-fw" style="font-size: 2em;color:white"></i></a>
-    <a href="https://www.linkedin.com/in/ignacio-lutteri/" title="Linkedin Profile" target="_blank"><i type="button"
-        class="fab fa-linkedin fa-fw" style="font-size: 2em; color:white"></i></a>
-  </div>
-        
-  <div class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
-  (click)="onOpenModal()" *ngIf="!isLogged ; else userloggedOut">Login</button></div>
+<nav class="navbar navbar-dark bg-dark">
 
-  <ng-template #userloggedOut class="p-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt" 
-    (click)="onLogOut()" *ngIf="isLogged">Logout</button></ng-template>
-  
+  <div class="container p-0">
+    <a class="navbar-brand m-0"
+      href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
+      <img src="assets/img/logoAp.png" alt="Logo de Argentina Programa" width="120" height="42">
+    </a>
+    <div class="d-inline-flex align-items-center">
 
-</div>
+      <div style="display: -webkit-flexbox; display: flex"><a href="https://github.com/ilutteri" title="Github Profile" target="_blank"><i type="button"
+          class="fab fa-github fa-fw" style="font-size: 2em;color:white"></i></a></div>
+
+      <div style="display: -webkit-flexbox; display: flex"><a href="https://www.linkedin.com/in/ignacio-lutteri/" title="Linkedin Profile" target="_blank"><i type="button"
+          class="fab fa-linkedin fa-fw" style="font-size: 2em; color:white"></i></a></div>
+
+      <div class="ms-2 bd-highlight"><button type="button" class="btn btn-outline-success" id="loginBt"
+          (click)="onOpenModal()" *ngIf="!isLogged ; else userloggedOut">Login</button></div>
+
+      <ng-template #userloggedOut class="ms-2 bd-highlight"><button type="button" class="btn btn-outline-success"
+          id="loginBt" (click)="onLogOut()" *ngIf="isLogged">Logout</button></ng-template>
+    </div>
+  </div>
+
+</nav>
 
 
 
@@ -40,8 +44,7 @@
               placeholder="Contraseña" required>
           </div>
           <div class="modal-footer">
-            <button type="button" id="add-skill-form" class="btn btn-outline-primary"
-              data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
             <button [disabled]="f.invalid" type="submit" class="btn btn-outline-info"
               data-bs-dismiss="modal">Ingresar</button>
           </div>

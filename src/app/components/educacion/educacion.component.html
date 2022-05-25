@@ -129,8 +129,9 @@
               placeholder="URL de Imagen">
           </div>
           <div class="modal-footer">
-            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
-            <button (click)="onEditEducation(editForm.value)" data-bs-dismiss="modal"
+            <button type="button"
+             data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button [disabled]="addForm.invalid" (click)="onEditEducation(editForm.value)" data-bs-dismiss="modal"
               class="btn btn-outline-info">Guardar Cambios</button>
           </div>
         </form>

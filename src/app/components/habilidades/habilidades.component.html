@@ -31,7 +31,7 @@
 
       </div>
 
-    </div>
+    </div> 
 
   </div>
 
@@ -44,7 +44,7 @@
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm, editST)">
             <div class="form-group">
-              <label for="Name">Nombre</label>
+              <label for="name">Nombre</label>
               <input type="text" ngModel name="name" class="form-control" id="skillNombre" placeholder="Nombre" required>
             </div>
             <div class="form-group">
@@ -91,19 +91,21 @@
         </div>
         <div class="modal-body">
           <form #editForm="ngForm">
+            <input type="hidden" ngModel="{{editSkill?.id}}" name="id" class="form-control" id="edu-id"
+            placeholder="Title">
             <div class="form-group">
-              <label for="establishment">Nombre</label>
+              <label for="name">Nombre</label>
               <input type="text" ngModel="{{editSkill?.name}}" name="name" class="form-control" id="skillName"
-                placeholder="name">
+                placeholder="Nombre de la Habilidad">
             </div>
             <div class="form-group">
               <label for="progress">Progreso</label>
               <input type="text" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="skillProgress"
-                placeholder="Title">
+                placeholder="Porcentaje del 1 al 100">
             </div>
             <input type="hidden" ngModel="{{editSkill?.id}}" name="id" class="form-control" id="skillId" placeholder="Title">
             <div class="modal-footer">
-              <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+              <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
               <button (click)="onEditSkill(editForm.value, editST)" data-bs-dismiss="modal"
                 class="btn btn-outline-info">Guardar Cambios</button>
             </div>

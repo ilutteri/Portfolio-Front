@@ -23,7 +23,7 @@
             <div class="card-body">
 
               <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <a [href]="project.gitHubURL" target="_blank" class="btn btn-outline-secondary">Enlace</a>
+                <a [href]="project.url" target="_blank" class="btn btn-outline-secondary">Enlace</a>
                 <a [href]="project.gitHubURL" target="_blank" class="btn btn-secondary">Repositorio</a>
               </div>
               
@@ -58,8 +58,8 @@
             <input type="text" ngModel name="title" class="form-control" id="nombre" placeholder="Nombre" required>
           </div>
           <div class="form-group">
-            <label for="title">Descripción</label>
-            <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Descripción" required>
+            <label for="about">Descripción</label>
+            <input type="text" ngModel name="about" class="form-control" id="about" placeholder="Descripción" required>
           </div>
           <div class="form-group">
             <label for="url">Link</label>
@@ -122,7 +122,7 @@
               placeholder="URL">
           </div>
           <div class="modal-footer">
-            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
             <button (click)="onEditProject(editForm.value)" data-bs-dismiss="modal" class="btn btn-outline-info">Guardar Cambios</button>
           </div>
         </form>

@@ -1,7 +1,7 @@
-<div class="card mb-3" id="main-container">
+<div class="card mb-3 border-0" id="main-container">
   <!--Banner / Profile / Review-->
-  <img *ngIf="profile" [src]="profile.bannerURL" class="responsive" id="banner" alt="Mountains And Clouds">
-  <img *ngIf="profile" [src]="profile.profileURL" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
+  <img [src]="profile.bannerURL" class="img-fluid" id="banner" alt="Mountains And Clouds">
+  <img [src]="profile.profileURL" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
   <div class="card-body">
 
     <div class="row">
@@ -56,8 +56,8 @@
           </div>
          
           <div class="modal-footer">
-            <button type="button" id="" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
-            <button (click)="onEditProfile(editForm.value)" data-bs-dismiss="modal" class="btn btn-outline-info">Guardar
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button [disabled]="editForm.invalid" (click)="onEditProfile(editForm.value)" data-bs-dismiss="modal" class="btn btn-outline-info">Guardar
               Cambios</button>
           </div>
         </form>

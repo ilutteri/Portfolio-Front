@@ -54,7 +54,7 @@ export class HabilidadesComponent implements OnInit {
   }
 
   public onEditSkill(skill: skill, editST: skillType): void {
-    editST.list = editST.list.map(function(x){if(x.name === skill.name){x = skill};return x});
+    editST.list = editST.list.map(function(x){if(x.id == skill.id){x = skill};return x});
     this.skillService.updateSkill(editST).subscribe(
       (response: skillType) => {
         console.log(response);
