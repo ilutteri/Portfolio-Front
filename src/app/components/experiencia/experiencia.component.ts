@@ -17,6 +17,7 @@ export class ExperienciaComponent implements OnInit {
   public editExperience!: expe;
   public deleteExperience!: expe;
   isLogged: boolean = false;
+  load:boolean = false;
 
 
   constructor(
@@ -35,6 +36,7 @@ export class ExperienciaComponent implements OnInit {
   public getExperience(): void {
     this.experienceService.getExperience().subscribe(data => {
       this.experienceList = data;
+      this.load = true;
     })
   }
 

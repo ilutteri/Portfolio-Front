@@ -1,4 +1,4 @@
-<div class="card h-100">
+<div *ngIf="load" class="card h-100">
   <!--Habilidades-->
 
   <div class="card-body">
@@ -100,8 +100,8 @@
             </div>
             <div class="form-group">
               <label for="progress">Progreso</label>
-              <input type="text" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="skillProgress"
-                placeholder="Porcentaje del 1 al 100">
+              <input type="number" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="skillProgress"
+                min="1" max="100">
             </div>
             <input type="hidden" ngModel="{{editSkill?.id}}" name="id" class="form-control" id="skillId" placeholder="Title">
             <div class="modal-footer">

@@ -16,6 +16,7 @@ export class EducacionComponent implements OnInit {
   public editEducation!: eduItem;
   public deleteEducation!: eduItem;
   isLogged: boolean = false;
+  load:boolean = false;
 
   constructor(
     private educationService: EducationService,
@@ -33,6 +34,7 @@ export class EducacionComponent implements OnInit {
   public getEducation(): void {
     this.educationService.getEducation().subscribe(data => {
       this.educationList = data;
+      this.load=true;
     })
   }
 

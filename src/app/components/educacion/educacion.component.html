@@ -1,4 +1,4 @@
-<div class="card h-100" style="margin-bottom: 30px">
+<div *ngIf="load" class="card h-100" style="margin-bottom: 30px">
   <!--Educación-->
 
   <div class="card-body" id="main-container">
@@ -14,10 +14,13 @@
           <img [src]="education.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="educ"
             style="margin-left:10px;">
         </div>
+
         <div class="col">
+
           <div class="edit text-end">
             <i type="button" class="fas fa-pen fa-fw" (click)="onOpenModal(education, 'edit')" *ngIf="isLogged"></i>
-            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(education, 'delete')" *ngIf="isLogged"></i>
+            <i type="button" class="fas fa-trash-alt fa-fw" (click)="onOpenModal(education, 'delete')"
+              *ngIf="isLogged"></i>
           </div>
 
           <ul class="list-group list-group-flush">
@@ -31,13 +34,14 @@
               </dl>
             </li>
           </ul>
-
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
+
+
 
 <div class="modal fade" id="addEducationModal" tabindex="-1" aria-labelledby="addEducationModalLabel"
   aria-hidden="true">
@@ -101,8 +105,7 @@
             <input type="text" ngModel="{{editEducation?.name}}" name="name" class="form-control" id="edu-name"
               placeholder="name">
           </div>
-          <input type="hidden" ngModel="{{editEducation?.id}}" name="id" class="form-control" id="edu-id"
-            placeholder="Title">
+          <input type="hidden" ngModel="{{editEducation?.id}}" name="id" class="form-control">
           <div class="form-group">
             <label for="title">Título</label>
             <input type="text" ngModel="{{editEducation?.title}}" name="title" class="form-control" id="edu-title"
@@ -129,9 +132,8 @@
               placeholder="URL de Imagen">
           </div>
           <div class="modal-footer">
-            <button type="button"
-             data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
-            <button [disabled]="addForm.invalid" (click)="onEditEducation(editForm.value)" data-bs-dismiss="modal"
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
+            <button [disabled]="editForm.invalid" (click)="onEditEducation(editForm.value)" data-bs-dismiss="modal"
               class="btn btn-outline-info">Guardar Cambios</button>
           </div>
         </form>

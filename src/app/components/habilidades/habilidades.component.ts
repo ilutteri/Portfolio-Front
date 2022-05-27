@@ -17,6 +17,7 @@ export class HabilidadesComponent implements OnInit {
   public editSkill!: skill;
   public deleteSkill!: skill;
   isLogged: boolean = false;
+  load:boolean = false;
   
   constructor(private skillService:SkillsService,
               private tokenService: TokenService) { }
@@ -33,6 +34,7 @@ export class HabilidadesComponent implements OnInit {
   public getSkills():void{
     this.skillService.getSkills().subscribe(data => {
       this.skillList = data;
+      this.load = true;
     })
 
   }

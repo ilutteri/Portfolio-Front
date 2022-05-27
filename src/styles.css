@@ -354,8 +354,17 @@ body{
 
 .card {
   border-radius: 0%;
+  background-color: #e9ebea;
 }
 
+.card-body {
+  background-color: #e9ebea;
+}
+
+li.list-group-item {
+  background-color: #e9ebea;
+}
+  
   
 ::-webkit-scrollbar {
     width: 0.5em;
@@ -431,12 +440,4 @@ icons{
   
 .fas:hover{
     opacity: .5;
-  }
-
-.cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-.cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }

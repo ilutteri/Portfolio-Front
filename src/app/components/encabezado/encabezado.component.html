@@ -1,4 +1,4 @@
-<div class="card mb-3 border-0" id="main-container">
+<div *ngIf="load; else cosito" class="card mb-3 border-0" id="main-container">
   <!--Banner / Profile / Review-->
   <img [src]="profile.bannerURL" class="img-fluid" id="banner" alt="Mountains And Clouds">
   <img [src]="profile.profileURL" class="card-img-top rounded-circle" id="profile" alt="Profile picture">
@@ -8,18 +8,41 @@
       <div class="col">
         <h5 class="card-title fs-2"> {{profile.name}} </h5>
         <p class="card-text fs-3"><b>{{profile.title}}</b></p>
+        <a href="mailto:ignaciolutteri@gmail.com"><button type="button"
+            class="btn btn-dark btn-sm">Contacto</button></a>
       </div>
       <div class="col d-flex align-items-end flex-column bd-highlight mb-3">
-        <i type="button" class="fas fa-pen fa-fw p-2 bd-highlight" (click)="onOpenModal(profile, 'edit')" *ngIf="isLogged"></i>
+        <i type="button" class="fas fa-pen fa-fw p-2 bd-highlight" (click)="onOpenModal(profile, 'edit')"
+          *ngIf="isLogged"></i>
       </div>
     </div>
-    
+
     <div class="row pt-3" id="about">
-      
       <p class="fs-6 fw-light">{{profile.about}}</p>
     </div>
   </div>
 </div>
+
+<ng-template #cosito>
+  <div class="container p-0">
+    <div class="card align-items-center">
+      <div class="card-body">
+        <div class="row">
+          <div class="wheel">
+            <div class="cabin"></div>
+            <div class="cabin"></div>
+            <div class="cabin"></div>
+            <div class="cabin"></div>
+            <div class="cabin"></div>
+            <div class="cabin"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
 
 
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -48,16 +71,19 @@
           </div>
           <div class="form-group">
             <label for="profileURL">URL de la Foto de Perfil</label>
-            <input type="text" ngModel="{{editProfile?.profileURL}}" name="profileURL" class="form-control" id="profileURL" placeholder="URL de la foto de Perfil">
+            <input type="text" ngModel="{{editProfile?.profileURL}}" name="profileURL" class="form-control"
+              id="profileURL" placeholder="URL de la foto de Perfil">
           </div>
           <div class="form-group">
             <label for="profileURL">Sobre Mi: </label>
-            <textarea rows="3" type="text" ngModel="{{editProfile?.about}}" name="about" class="form-control" id="aboutMe" placeholder="Una breve descripción sobre ti"></textarea>
+            <textarea rows="3" type="text" ngModel="{{editProfile?.about}}" name="about" class="form-control"
+              id="aboutMe" placeholder="Una breve descripción sobre ti"></textarea>
           </div>
-         
+
           <div class="modal-footer">
             <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary">Cerrar</button>
-            <button [disabled]="editForm.invalid" (click)="onEditProfile(editForm.value)" data-bs-dismiss="modal" class="btn btn-outline-info">Guardar
+            <button [disabled]="editForm.invalid" (click)="onEditProfile(editForm.value)" data-bs-dismiss="modal"
+              class="btn btn-outline-info">Guardar
               Cambios</button>
           </div>
         </form>

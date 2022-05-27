@@ -15,7 +15,6 @@ export class BarraloginComponent implements OnInit {
   loginUsuario: LoginUsuario;
   nombreUsuario: string;
   password: string;
-  errorMsj: string;
 
   constructor(
     private tokenService: TokenService,
@@ -47,10 +46,11 @@ export class BarraloginComponent implements OnInit {
       error => {
         this.isLogged = false;
         this.isLoginFail = true;
-        this.errorMsj = error.error.mensaje;
-        console.log(this.errorMsj);
-      }
-    )
+        const inputs  = document.querySelectorAll('#nombreUsuario, #password');
+        inputs.forEach(input => {
+        (input as HTMLInputElement).value = ''})
+        }
+      )
   }
 
   public onOpenModal(): void {

@@ -4,6 +4,9 @@ import { ProjectsService } from 'src/app/services/projects.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { TokenService } from 'src/app/services/token.service';
+import { ViewportScroller } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-proyectos',
@@ -15,10 +18,14 @@ export class ProyectosComponent implements OnInit {
   public editProject!: project;
   public deleteProject!: project;
   isLogged : boolean = false;
+  load:boolean = false;
+
+  
 
   constructor(
     private projectsService: ProjectsService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private scroll: ViewportScroller) { }
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -29,9 +36,12 @@ export class ProyectosComponent implements OnInit {
     this.getProjects();
   }
 
+
+
   public getProjects(): void {
     this.projectsService.getProject().subscribe(data => {
       this.projectList = data;
+      this.load = true;
     })
   }
 
@@ -95,5 +105,9 @@ export class ProyectosComponent implements OnInit {
     button.click();
   }
 
+
+  scrollToTop(){
+    this.scroll.scrollToPosition([0,0]);
+  }
 
 }

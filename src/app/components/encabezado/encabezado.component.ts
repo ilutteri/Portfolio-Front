@@ -13,6 +13,7 @@ export class EncabezadoComponent implements OnInit {
   profile: profile;
   editProfile!: profile;
   isLogged: boolean = false;
+  load:boolean = false;
 
   constructor(
     private profileService: ProfileService,
@@ -30,6 +31,7 @@ export class EncabezadoComponent implements OnInit {
   public getProfile(): void {
     this.profileService.getProfile().subscribe(data => {
       this.profile = data[0];
+      this.load = true;
     })
   }
 
