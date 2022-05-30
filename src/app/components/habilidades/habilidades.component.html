@@ -49,7 +49,7 @@
             </div>
             <div class="form-group">
               <label for="progress">Progreso</label>
-              <input type="text" ngModel name="progress" class="form-control" id="skillProgress" placeholder="Progreso"
+              <input type="number" min="0" max="100" ngModel name="progress" class="form-control" id="skillProgress" placeholder="0-100"
                 required>
             </div>
             <div class="modal-footer">
@@ -63,6 +63,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="modal fade" id="deleteSkillModal" tabindex="-1" aria-labelledby="deleteSkillModalLabel"
     aria-hidden="true">
@@ -100,7 +101,7 @@
             </div>
             <div class="form-group">
               <label for="progress">Progreso</label>
-              <input type="number" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="skillProgress"
+              <input type="number" ngModel="{{editSkill?.progress}}" name="progress" class="form-control" id="skill-Progress"
                 min="1" max="100">
             </div>
             <input type="hidden" ngModel="{{editSkill?.id}}" name="id" class="form-control" id="skillId" placeholder="Title">
