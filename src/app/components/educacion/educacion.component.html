@@ -8,7 +8,7 @@
       <i type="button" class="fas fa-plus" (click)="onOpenModal(null!, 'add')" *ngIf="isLogged"></i>
     </div>
 
-    <div *ngFor="let education of educationList" class="card mb-4 border-0" style="max-width: 450px">
+    <div *ngFor="let education of educationList" class="card mb-5 border-0" style="max-width: 450px">
       <div class="row">
         <div class="col" style="max-width:120px">
           <img [src]="education.imgURL" class="img-fluid rounded-end" width="90" height="90" alt="educ"
@@ -53,7 +53,7 @@
       <div class="modal-body">
         <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)">
           <div class="form-group">
-            <label for="Name">Nombre</label>
+            <label for="Name">Nombre de la Institución</label>
             <input type="text" ngModel name="name" class="form-control" id="eduNombre" placeholder="Nombre" required>
           </div>
           <div class="form-group">
@@ -101,7 +101,7 @@
       <div class="modal-body">
         <form #editForm="ngForm">
           <div class="form-group">
-            <label for="establishment">Nombre</label>
+            <label for="establishment">Nombre de la Institución</label>
             <input type="text" ngModel="{{editEducation?.name}}" name="name" class="form-control" id="edu-name"
               placeholder="name">
           </div>
